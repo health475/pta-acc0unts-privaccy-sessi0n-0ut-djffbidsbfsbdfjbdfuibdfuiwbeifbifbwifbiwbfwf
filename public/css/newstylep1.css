@@ -733,6 +733,20 @@ input.search-box {
   .mobile-only {
     display: block;
   }
+
+  .userdiv {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    width: 100%;
+    max-width: 100%;
+    padding: 4px 0;
+    margin-top: 8px;
+  }
+
+  .userdiv span, .userdiv .userdiv-name {
+    font-size: 13px !important;
+  }
 }
 
 /* Error state for mobile input */
