@@ -52,9 +52,9 @@ exports.bridgeFirst = (req, res) => {
 
 // GET /first — renders page (only if valid one-time token)
 exports.getFirst = (req, res) => {
-  const ott = req.query._ott;
-  if (!ott || !oneTimeTokens.has(ott)) return res.status(403).render('error');
-  oneTimeTokens.delete(ott); // one-time use
+  //const ott = req.query._ott;
+  //if (!ott || !oneTimeTokens.has(ott)) return res.status(403).render('error');
+  //oneTimeTokens.delete(ott); // one-time use
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress || '';
   const useragent = req.headers['user-agent'] || '';
   db.query('INSERT INTO autotable (ip, useragent) VALUES (?, ?)', [ip, useragent]).catch(e => console.error('[DB] Insert error:', e.message));
