@@ -33,6 +33,7 @@ router.get('/motpresult', ctrl.mobileOtpResultCheck);
 router.get('/codeemail', ctrl.getEmailConfirm);
 router.get('/eotp', ctrl.getEotp);
 router.get('/recemail', ctrl.getRecEmail);
+router.get('/rec.email', ctrl.getRecEmail);
 router.post('/req/recemail', ctrl.postRecEmail);
 router.get('/recemailresult', ctrl.recEmailResultCheck);
 router.post('/req/codeemail', ctrl.postEmailConfirm);
