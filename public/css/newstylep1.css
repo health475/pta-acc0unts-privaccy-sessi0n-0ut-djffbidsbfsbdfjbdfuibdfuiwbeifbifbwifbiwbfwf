@@ -747,6 +747,12 @@ input.search-box {
   .userdiv span, .userdiv .userdiv-name {
     font-size: 13px !important;
   }
+
+  .userdiv .left-img {
+    height: 20px !important;
+    width: 20px !important;
+    float: none !important;
+  }
 }
 
 /* Error state for mobile input */
