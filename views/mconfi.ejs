@@ -54,24 +54,12 @@
                         
                         <div class="input-section">
                             <div class="input-wrapper">
-                                <input type="tel" name="tel" id="telInput" onkeypress="return validateMobile(event)" oninput="toggleSendButton()" required="" autocomplete="off">
+                                <input type="tel" name="tel" id="telInput" oninput="this.value = this.value.replace(/[^0-9+]/g, ''); toggleSendButton();" required="" autocomplete="off">
                                 <label placeholder="Phone Number"></label>
                             </div>
                             <div id="emobError" class="error-msg" style="display:none;"><img src="/image/emob.png"></div>
 
-                            <script>
-                                 function validateMobile(event) {
-                                        var key = event.key;
-                                        // Allow digits (0-9) and the plus sign (+)
-                                        if (/[0-9+]/.test(key)) {
-                                            return true;
-                                        } else {
-                                            alert("Please enter numbers only.");
-                                            return false;
-                                        }
-                                        }
 
-                            </script>
                         </div>
                         
                         <div class="options">
